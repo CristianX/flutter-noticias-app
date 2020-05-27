@@ -2,6 +2,9 @@
 
 A new Flutter project.
 
+## Dependencias
+* Provider `provider: ^4.1.2`
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
