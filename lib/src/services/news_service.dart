@@ -24,13 +24,13 @@ class NewsService with ChangeNotifier {
 
   // Listado de categorias
   List<Categoria> categorias = [
-    Categoria( FontAwesomeIcons.building, 'business' ),
-    Categoria( FontAwesomeIcons.tv, 'entertainment' ),
+    Categoria( FontAwesomeIcons.building, 'negocios' ),
+    Categoria( FontAwesomeIcons.tv, 'entretenimiento' ),
     Categoria( FontAwesomeIcons.addressCard, 'general' ),
-    Categoria( FontAwesomeIcons.headSideVirus, 'health' ),
-    Categoria( FontAwesomeIcons.vials, 'science' ),
-    Categoria( FontAwesomeIcons.volleyballBall, 'sports' ),
-    Categoria( FontAwesomeIcons.memory, 'technology' ), 
+    Categoria( FontAwesomeIcons.headSideVirus, 'salud' ),
+    Categoria( FontAwesomeIcons.vials, 'ciencia' ),
+    Categoria( FontAwesomeIcons.volleyballBall, 'deportes' ),
+    Categoria( FontAwesomeIcons.memory, 'tecnología' ), 
   ];
 
   NewsService() {
