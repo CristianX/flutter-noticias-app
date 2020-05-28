@@ -75,7 +75,11 @@ class _CategoriaBoton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        print('${ categoria.name }');
+        // print('${ categoria.name }');
+
+        // Para no redibujar listen: false (Solo en eventos tap)
+        final newsService = Provider.of<NewsService>(context, listen: false );
+        newsService.categoriaSelecciona = categoria.name;
       },
       child: Container(
         width: 40,

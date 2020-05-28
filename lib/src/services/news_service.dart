@@ -21,22 +21,42 @@ class NewsService with ChangeNotifier {
 
 
   List<Article> encabezados = [];
+  String _categoriaSeleccionada = 'business';
 
   // Listado de categorias
   List<Categoria> categorias = [
-    Categoria( FontAwesomeIcons.building, 'negocios' ),
-    Categoria( FontAwesomeIcons.tv, 'entretenimiento' ),
+    Categoria( FontAwesomeIcons.building, 'business' ),
+    Categoria( FontAwesomeIcons.tv, 'entertainment' ),
     Categoria( FontAwesomeIcons.addressCard, 'general' ),
-    Categoria( FontAwesomeIcons.headSideVirus, 'salud' ),
-    Categoria( FontAwesomeIcons.vials, 'ciencia' ),
-    Categoria( FontAwesomeIcons.volleyballBall, 'deportes' ),
-    Categoria( FontAwesomeIcons.memory, 'tecnología' ), 
+    Categoria( FontAwesomeIcons.headSideVirus, 'health' ),
+    Categoria( FontAwesomeIcons.vials, 'science' ),
+    Categoria( FontAwesomeIcons.volleyballBall, 'sports' ),
+    Categoria( FontAwesomeIcons.memory, 'technology' ), 
   ];
+
+  // Manejando en cache toda la información descargada de categorias
+  Map<String, List<Article>> articulosCategoria = {};
 
   NewsService() {
 
     this.getTopEncabezados();
 
+    categorias.forEach((item) {
+
+      // Inicializando el listado en el objeto articulosCategoria
+      this.articulosCategoria[item.name] = new List();
+    });
+
+  }
+
+  // Getters y setters
+  get categoriaSelecciona => this._categoriaSeleccionada;
+  set categoriaSelecciona ( String valor ) {
+    this._categoriaSeleccionada = valor;
+
+    this.getArticulosPorCategoria( valor );
+
+    notifyListeners();
   }
 
   getTopEncabezados() async {
@@ -49,6 +69,26 @@ class NewsService with ChangeNotifier {
     final newsResponse = newsResponseFromJson(resp.body);
 
     this.encabezados.addAll( newsResponse.articles );
+
+    notifyListeners();
+
+  }
+
+  getArticulosPorCategoria( String categoria ) async {
+
+    // Si ya esta cargando no se regresa nada más
+    if( this.articulosCategoria[categoria].length > 0 ) {
+      return this.articulosCategoria[categoria];
+    }
+
+    // Trayendo información de news api
+    final url = '$_urlNews/top-headlines?apiKey=$_apiKey&country=mx&category=$categoria';
+
+    final resp = await http.get(url);
+
+    final newsResponse = newsResponseFromJson(resp.body);
+
+    this.articulosCategoria[categoria].addAll( newsResponse.articles );
 
     notifyListeners();
 
