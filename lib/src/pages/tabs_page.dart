@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-// Service
-import 'package:news_app/src/services/news_service.dart';
+// Pages
+import 'package:news_app/src/pages/tab1_page.dart';
 
 // Paquete provider
 import 'package:provider/provider.dart';
@@ -50,7 +50,7 @@ class _Paginas extends StatelessWidget {
 
     // Instancia de pageController
     final navegacionModel = Provider.of<_NavegacionModel>(context);
-    final newsService = Provider.of<NewsService>(context);
+    // final newsService = Provider.of<NewsService>(context);
 
     return PageView(
       // Controlando las páginas con el getter del pageController
@@ -61,9 +61,8 @@ class _Paginas extends StatelessWidget {
       // Evitando deslizamiento
       physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
-        Container(
-          color: Colors.red
-        ),
+        
+        Tab1Page(),
 
         Container(
           color: Colors.green,
