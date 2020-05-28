@@ -32,6 +32,8 @@ dependencies:
   provider: ^4.1.2
   # Http
   http: ^0.12.1
+  # Font Awesome
+  font_awesome_flutter: ^8.8.1
 
 dev_dependencies:
   flutter_test:

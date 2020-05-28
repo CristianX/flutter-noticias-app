@@ -5,6 +5,7 @@ A new Flutter project.
 ## Dependencias
 * Provider `provider: ^4.1.2`
 * Http `http: ^0.12.1`
+* Font Awesome `font_awesome_flutter: ^8.8.1` <!-- Iconos de font awesome -->
 
 ## Getting Started
 
