@@ -5,6 +5,7 @@ import 'package:news_app/src/models/categoria_model.dart';
 
 // Servicios
 import 'package:news_app/src/services/news_service.dart';
+import 'package:news_app/src/theme/tema.dart';
 
 
 // Package provider
@@ -73,6 +74,10 @@ class _CategoriaBoton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // Para redibujar el color del boton seleccionado
+    final newsService = Provider.of<NewsService>(context);
+
     return GestureDetector(
       onTap: (){
         // print('${ categoria.name }');
@@ -80,6 +85,7 @@ class _CategoriaBoton extends StatelessWidget {
         // Para no redibujar listen: false (Solo en eventos tap)
         final newsService = Provider.of<NewsService>(context, listen: false );
         newsService.categoriaSelecciona = categoria.name;
+
       },
       child: Container(
         width: 40,
@@ -91,7 +97,7 @@ class _CategoriaBoton extends StatelessWidget {
         ),
         child: Icon(
           categoria.icon,
-          color: Colors.black54,
+          color: ( newsService.categoriaSelecciona == this.categoria.name ) ? miTema.accentColor : Colors.black54,
         )
       ),
     );
