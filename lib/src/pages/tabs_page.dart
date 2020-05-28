@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// Service
+import 'package:news_app/src/services/news_service.dart';
+
 // Paquete provider
 import 'package:provider/provider.dart';
 
@@ -47,6 +50,7 @@ class _Paginas extends StatelessWidget {
 
     // Instancia de pageController
     final navegacionModel = Provider.of<_NavegacionModel>(context);
+    final newsService = Provider.of<NewsService>(context);
 
     return PageView(
       // Controlando las páginas con el getter del pageController

@@ -4,6 +4,7 @@ A new Flutter project.
 
 ## Dependencias
 * Provider `provider: ^4.1.2`
+* Http `http: ^0.12.1`
 
 ## Getting Started
 
