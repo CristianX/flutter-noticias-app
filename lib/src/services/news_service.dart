@@ -59,6 +59,9 @@ class NewsService with ChangeNotifier {
     notifyListeners();
   }
 
+  // Para mostrar los artículos de la categoria seleccionada
+  List<Article> get getArticulosCategoriaSeleccionada => this.articulosCategoria[ this.categoriaSelecciona ];
+
   getTopEncabezados() async {
     
     // Trayendo información de news api
@@ -76,7 +79,7 @@ class NewsService with ChangeNotifier {
 
   getArticulosPorCategoria( String categoria ) async {
 
-    // Si ya esta cargando no se regresa nada más
+    // Si ya esta cargando no se regresa nada más cache
     if( this.articulosCategoria[categoria].length > 0 ) {
       return this.articulosCategoria[categoria];
     }
